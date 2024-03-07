@@ -9,8 +9,6 @@ class Counter extends Component {
       count: props.initialValue,
       countClass: props.countClass,
     };
-
-    this.cssClass = props.className;
   }
   componentDidMount() {
     console.log('Mount complited');
@@ -40,11 +38,10 @@ class Counter extends Component {
   reset = () => this.setState({ count: 0, countClass: 'main-section__count' });
 
   render = () => {
-    const { count } = this.state;
-    const { countClass } = this.state;
+    const { count, countClass } = this.state;
 
     return (
-      <div className={this.cssClass}>
+      <div className={this.props.className}>
         <p className="main-section__title">Simple Counter on React</p>
         <div className="main-section__counter">
           <button
