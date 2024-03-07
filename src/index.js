@@ -5,8 +5,6 @@ import Header from './components/Header/Header.jsx';
 import Main from './components/Main/Main.jsx';
 import Footer from './components/Footer/Footer.jsx';
 
-// const header = React.createElement('header', { className: 'header' });
-// const nav = React.createElement;
 
 const mainEl = document.querySelector('main');
 const root = ReactDOM.createRoot(mainEl);

@@ -1,12 +1,15 @@
 import React from 'react';
 import './main.scss';
-
-const imgUrl = './images/main_photo.jpg';
+import Counter from '../Counter/Counter.jsx';
 
 const Main = ({ sectionClass }) => {
   return (
     <section className={sectionClass}>
-      <Counter />
+      <Counter
+        className="main-section__counter-box"
+        initialValue={0}
+        countClass='main-section__count'
+      />
     </section>
   );
 };

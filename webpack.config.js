@@ -38,7 +38,7 @@ module.exports = (env) => {
         patterns: [
           { from: 'src/images', to: 'images' }, // Копіює файли з src/images у папку build/images
         ],
-      })
+      }),
     ],
     optimization: {
       minimizer: [
@@ -57,7 +57,10 @@ module.exports = (env) => {
             { loader: 'css-loader', options: { sourceMap: true } },
             { loader: 'sass-loader', options: { sourceMap: true } },
           ],
-          include: path.resolve(__dirname, 'src', 'style'), // where to take style.scss file
+          include: [
+            path.resolve(__dirname, 'src', 'style'),
+            path.resolve(__dirname, 'src', 'components'),
+          ], // where to take style.scss file
         },
         {
           test: /\.jsx?$/,
