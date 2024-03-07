@@ -12,6 +12,12 @@ class Counter extends Component {
 
     this.cssClass = props.className;
   }
+  componentDidMount() {
+    console.log('Mount complited');
+  }
+  componentDidUpdate() {
+    console.log('Updated');
+  }
 
   increment = () =>
     this.setState((prevState) => ({
