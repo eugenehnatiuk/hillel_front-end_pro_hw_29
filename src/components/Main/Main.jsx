@@ -5,11 +5,7 @@ import Counter from '../Counter/Counter.jsx';
 const Main = ({ sectionClass }) => {
   return (
     <section className={sectionClass}>
-      <Counter
-        className="main-section__counter-box"
-        initialValue={0}
-        countClass='main-section__count'
-      />
+      <Counter className="main-section__counter-box" initialValue={0} />
     </section>
   );
 };

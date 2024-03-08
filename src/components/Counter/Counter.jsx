@@ -7,7 +7,6 @@ class Counter extends Component {
 
     this.state = {
       count: props.initialValue,
-      countClass: props.countClass,
     };
   }
   componentDidMount() {
@@ -18,27 +17,34 @@ class Counter extends Component {
   }
 
   increment = () =>
-    this.setState((prevState) => ({
-      count: prevState.count + 1,
-      countClass:
-        prevState.count + 1 < 0
-          ? 'main-section__count--zero'
-          : 'main-section__count',
-    }));
+    this.setState(
+      (prevState) => ({
+        count: prevState.count + 1,
+      }),
+      () => {
+        console.log(`The counter was incrised to: ${this.state.count}`);
+      }
+    ); // первым аргументом передали прошлое состояние, второй аргумент меняет state, третий -- callback любой.
 
   decrement = () =>
-    this.setState((prevState) => ({
-      count: prevState.count - 1,
-      countClass:
-        prevState.count - 1 < 0
-          ? 'main-section__count--zero'
-          : 'main-section__count',
-    }));
+    this.setState(
+      (prevState) => ({
+        count: prevState.count - 1,
+      }),
+      () => {
+        console.log(`The counter was decrised to: ${this.state.count}`);
+      }
+    );
 
-  reset = () => this.setState({ count: 0, countClass: 'main-section__count' });
+  reset = () =>
+    this.setState({ count: 0, countClass: 'main-section__count' }, () => {
+      console.log(`The counter was reseted to: ${this.state.count}`);
+    });
 
   render = () => {
-    const { count, countClass } = this.state;
+    const { count } = this.state;
+    const countClassUnderZero =
+      count < 0 ? 'main-section__count--zero' : 'main-section__count';
 
     return (
       <div className={this.props.className}>
@@ -46,22 +52,16 @@ class Counter extends Component {
         <div className="main-section__counter">
           <button
             className="main-section__decrement"
-            onClick={(event) => this.decrement()}
+            onClick={this.decrement} // or onClick={(event) => this.decrement()}
           >
             -
           </button>
-          <span className={countClass}>{count}</span>
-          <button
-            className="main-section__increment"
-            onClick={(event) => this.increment()}
-          >
+          <span className={countClassUnderZero}>{count}</span>
+          <button className="main-section__increment" onClick={this.increment}>
             +
           </button>
         </div>
-        <button
-          className="main-section__reset-btn"
-          onClick={() => this.reset()}
-        >
+        <button className="main-section__reset-btn" onClick={this.reset}>
           Reset
         </button>
       </div>
